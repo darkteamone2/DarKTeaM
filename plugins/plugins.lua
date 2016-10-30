@@ -22,28 +22,28 @@ local function plugin_exists( name )
 end
 
 local function list_all_plugins(only_enabled)
-  local tmp = '\n\nðŸ†” @DarkTeamOne'
+  local tmp = '\n\n🆔 @DarkTeamOne'
   local text = ''
   local nsum = 0
   for k, v in pairs( plugins_names( )) do
-    --  âœ” enabled, âŒ disabled
-    local status = 'âŒDisableâž£'
+    --  ✔ enabled, ❌ disabled
+    local status = '❌Disable➣'
     nsum = nsum+1
     nact = 0
     -- Check if is enabled
     for k2, v2 in pairs(_config.enabled_plugins) do
       if v == v2..'.lua' then 
-        status = 'âœ…Enableâž£' 
+        status = '✅Enable➣' 
       end
       nact = nact+1
     end
-    if not only_enabled or status == 'âœ…Enableâž£' then
+    if not only_enabled or status == '✅Enable➣' then
       -- get the name
       v = string.match (v, "(.*)%.lua")
       text = text..nsum..'.'..status..' '..v..' \n'
     end
   end
-  local text = text..'\n\n'..nsum..' âœ”ï¸plugins installed\n\n'..nact..' ðŸ”µplugins enabled\n\n'..nsum-nact..' âš«ï¸plugins disabled'..tmp
+  local text = text..'\n\n'..nsum..' ✔️plugins installed\n\n'..nact..' 🔵plugins enabled\n\n'..nsum-nact..' ⚫️plugins disabled'..tmp
   return text
 end
 
@@ -51,24 +51,24 @@ local function list_plugins(only_enabled)
   local text = ''
   local nsum = 0
   for k, v in pairs( plugins_names( )) do
-    --  âœ” enabled, âŒ disabled
-    local status = 'âŒDisableâž£'
+    --  ✔ enabled, ❌ disabled
+    local status = '❌Disable➣'
     nsum = nsum+1
     nact = 0
     -- Check if is enabled
     for k2, v2 in pairs(_config.enabled_plugins) do
       if v == v2..'.lua' then 
-        status = 'âœ…Enableâž£' 
+        status = '✅Enable➣' 
       end
       nact = nact+1
     end
-    if not only_enabled or status == 'âœ…Enableâž£' then
+    if not only_enabled or status == '✅Enable➣' then
       -- get the name
       v = string.match (v, "(.*)%.lua")
      -- text = text..v..'  '..status..'\n'
     end
   end
-  local text = text.."\nðŸ”ƒAll Plugins Reloaded\n\n"..nact.." ðŸ”µPlugins Enabled\n"..nsum.." âœ”ï¸Plugins Installed\n\nðŸ†” @DarkTeamOne"
+  local text = text.."\n🔃All Plugins Reloaded\n\n"..nact.." 🔵Plugins Enabled\n"..nsum.." ✔️Plugins Installed\n\n🆔 @DarkTeamOne"
 return text
 end
 
